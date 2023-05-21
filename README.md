@@ -1,11 +1,14 @@
 # Prioritized-DQN-DDQN-Pytorch
 
-A clean and robust implementation of Prioritized Experience Replay with DQN/DDQN. 
+A clean and robust implementation of Prioritized Experience Replay (PER) with DQN/DDQN. 
+
+Other RL algorithms by Pytorch can be found [here](https://github.com/XinJingHao/RL-Algorithms-by-Pytorch).
+
 
 <br/>
 <br/>
 
-Here are three versions:
+Here are three versions of PER :
 
 + **Version 1: PriorDQN_gym0.1x**
 
