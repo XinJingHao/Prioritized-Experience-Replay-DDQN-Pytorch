@@ -73,6 +73,12 @@ Here are three versions of PER :
   |                           CartPole                           |                         LunarLander                          |
   | :----------------------------------------------------------: | :----------------------------------------------------------: |
   | <img src="https://github.com/XinJingHao/Prioritized-DQN-DDQN-Pytorch/blob/main/LightPriorDQN_gym0.2x/IMGs/CPV1.svg" width="320" height="200"> | <img src="https://github.com/XinJingHao/Prioritized-DQN-DDQN-Pytorch/blob/main/LightPriorDQN_gym0.2x/IMGs/LLDV2.svg" width="320" height="200"> |
+  
+  <br/>
+  
+  The traning time comparasion between *LightPriorDQN_gym0.2x(red)* and *PriorDQN_gym0.2x(blue)* is given as follow, where 3X acceleration can be observed:
+  
+  <img src="https://github.com/XinJingHao/Prioritized-DQN-DDQN-Pytorch/blob/main/LightPriorDQN_gym0.2x/IMGs/time_comparing.svg" width="320" height="200">
 
 
 <br/>
