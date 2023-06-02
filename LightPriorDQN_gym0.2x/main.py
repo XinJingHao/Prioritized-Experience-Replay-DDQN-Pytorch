@@ -91,21 +91,19 @@ def main():
         total_steps = 0
         while total_steps < opt.Max_train_steps:
             s, info = env.reset()
-            while True:
-                try:
-                    # 每次回合结束后会删除a_next变量，保证初始状态正确计算a, q_a
-                    a = a_next # 看看是否有已经计算好的action
-                except: 
-                    a, q_a = model.select_action(s, deterministic=False) # 仅在reset()后为初始状态执行一次
+            a, q_a = model.select_action(s, deterministic=False)
+            # ↑ cover s, a, q_a from last episode ↑
 
+            while True:
                 s_next, r, dw, tr, info = env.step(a) # dw: terminated; tr: truncated
                 if r <= -100: r = -10  # good for LunarLander
                 a_next, q_a_next = model.select_action(s_next, deterministic=False)
 
+                # [s; a, q_a; r, dw, tr, s_next; a_next, q_a_next] have been all collected.
                 priority = (torch.abs(r + (~dw)*opt.gamma*q_a_next - q_a) + 0.01)**opt.alpha #scalar
                 buffer.add(s, a, r, dw, tr, priority)
-                s, q_a = s_next, q_a_next
-            
+
+                s, a, q_a = s_next, a_next, q_a_next
 
                 '''update if its time'''
                 # train 50 times every 50 steps rather than 1 training per step. Better!
@@ -136,9 +134,7 @@ def main():
                 if (total_steps) % opt.save_interval == 0:
                     model.save(algo_name,BriefEnvName[opt.EnvIdex],int(total_steps/1000))
 
-                if (dw + tr):
-                    del a_next # 释放a_next，保证正确计算初始状态的a, q_a
-                    break
+                if dw or tr: break
 
     env.close()
     eval_env.close()
