@@ -1,6 +1,6 @@
-# Prioritized-DQN-DDQN-Pytorch
+# Prioritized Experience Replay DDQN-Pytorch
 
-A clean and robust implementation of Prioritized Experience Replay (PER) with DQN/DDQN. 
+A clean and robust implementation of [Prioritized Experience Replay (PER)](https://arxiv.org/abs/1511.05952) with DQN/DDQN. 
 
 Other RL algorithms by Pytorch can be found [here](https://github.com/XinJingHao/RL-Algorithms-by-Pytorch).
 
@@ -8,11 +8,68 @@ Other RL algorithms by Pytorch can be found [here](https://github.com/XinJingHao
 <br/>
 <br/>
 
-Here are three versions of PER :
+## How to use my code
 
+### Train from scratch
+
+```bash
+cd LightPriorDQN_gym0.2x # or PriorDQN_gym0.2x, PriorDQN_gym0.1x
+
+python main.py
+```
+
+where the default enviroment is CartPole-v1.  
+
+### Play with trained model
+
+```bash
+cd LightPriorDQN_gym0.2x # or PriorDQN_gym0.2x, PriorDQN_gym0.1x
+
+python main.py --write False --render True --Loadmodel True --ModelIdex 50
+```
+
+### Change Enviroment
+
+If you want to train on different enviroments
+
+```bash
+cd LightPriorDQN_gym0.2x # or PriorDQN_gym0.2x, PriorDQN_gym0.1x
+
+python main.py --EnvIdex 1
+```
+
+The --EnvIdex can be set to be 0 and 1, where   
+
+```bash
+'--EnvIdex 0' for 'CartPole-v1'  
+'--EnvIdex 1' for 'LunarLander-v2'   
+```
+
+if you want train on LunarLander-v2, you need to install box2d-py first.
+
+
+### Visualize the training curve
+
+You can use the [tensorboard](https://pytorch.org/docs/stable/tensorboard.html) to visualize the training curve. History training curve is saved at '\runs'
+
+### Hyperparameter Setting
+
+For more details of Hyperparameter Setting, please check 'main.py'
+
+<br/>
+
+## Versions
+### This repository contains three versions of PER :
+- Version 1: PriorDQN_gym0.1x
+- Version 2: PriorDQN_gym0.2x
+- Version 3: LightPriorDQN_gym0.2x
+
+where **Version 3 is most recommended**, because it is the newest, simplest, and fastest one.
+
+### Details of V1, V2, and V3:
 + **Version 1: PriorDQN_gym0.1x**
 
-  Implemented with gym version *0.1x*, where ***s_next, a, r, done, info = env.step(a)***
+  Implemented with **gym==0.19.0**, where ***s_next, a, r, done, info = env.step(a)***
 
   Prioritized sampling is realized by ***sum-tree***
 
@@ -35,16 +92,19 @@ Here are three versions of PER :
 
 + **Version 2: PriorDQN_gym0.2x**
 
-  Implemented with gym version *0.2x*, where ***s_next, a, r, terminated, truncated, info = env.step(a)***
+  Implemented with **gymnasium==0.29.1**, where ***s_next, a, r, terminated, truncated, info = env.step(a)***
 
   Prioritized sampling is realized by ***sum-tree***
 
   ```python
   # Dependencies of PriorDQN_gym0.2x
-  gymnasim==0.28.1 
-  numpy==1.24.3  
-  pytorch==2.0.1 
-  tensorboard==2.13.0
+  gymnasium==0.29.1
+  box2d-py==2.3.5
+  numpy==1.26.1
+  pytorch==2.1.0
+  tensorboard==2.15.1
+
+  python==3.11.5
   ```
 
   |                           CartPole                           |                         LunarLander                          |
@@ -64,10 +124,13 @@ Here are three versions of PER :
 
   ```python
   # Dependencies of LightPriorDQN_gym0.2x
-  gymnasim==0.28.1 
-  numpy==1.24.3  
-  pytorch==2.0.1 
-  tensorboard==2.13.0
+  gymnasium==0.29.1
+  box2d-py==2.3.5
+  numpy==1.26.1
+  pytorch==2.1.0
+  tensorboard==2.15.1
+
+  python==3.11.5
   ```
 
   |                           CartPole                           |                         LunarLander                          |
@@ -84,62 +147,8 @@ Here are three versions of PER :
 <br/>
 <br/>
 
-## How to use my code
 
-### Train from scratch
-
-```bash
-cd PriorDQN_gym0.1x # or PriorDQN_gym0.2x, LightPriorDQN_gym0.2x
-
-python main.py
-```
-
-where the default enviroment is CartPole-v1.  
-
-<br/>
-
-### Play with trained model
-
-```bash
-cd PriorDQN_gym0.1x # or PriorDQN_gym0.2x, LightPriorDQN_gym0.2x
-
-python main.py --write False --render True --Loadmodel True --ModelIdex 50000
-```
-
-<br/>
-
-### Change Enviroment
-
-If you want to train on different enviroments
-
-```bash
-cd PriorDQN_gym0.1x # or PriorDQN_gym0.2x, LightPriorDQN_gym0.2x
-
-python main.py --EnvIdex 1
-```
-
-The --EnvIdex can be set to be 0 and 1, where   
-
-```bash
-'--EnvIdex 0' for 'CartPole-v1'  
-'--EnvIdex 1' for 'LunarLander-v2'   
-```
-
-<br/>
-
-### Visualize the training curve
-
-You can use the tensorboard to visualize the training curve. History training curve is saved at '\runs'
-
-<br/>
-
-### Hyperparameter Setting
-
-For more details of Hyperparameter Setting, please check 'main.py'
-
-<br/>
-
-### References
+## References
 
 PER: Schaul T, Quan J, Antonoglou I, et al. Prioritized experience replay[J]. arXiv preprint arXiv:1511.05952, 2015.
 
