@@ -82,6 +82,8 @@ where **V3 is most recommended**, because it is the newest, simplest, and fastes
   numpy==1.21.6
   pytorch==1.11.0
   tensorboard==2.13.0
+
+  python==3.9.0
   ```
 
   |                           CartPole                           |                         LunarLander                          |
