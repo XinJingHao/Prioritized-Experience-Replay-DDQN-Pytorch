@@ -2,6 +2,9 @@
 
 A clean and robust implementation of [Prioritized Experience Replay (PER)](https://arxiv.org/abs/1511.05952) with DQN/DDQN. 
 
+<img src="https://github.com/XinJingHao/DQN-DDQN-Pytorch/blob/main/IMGs/Render_CVP1.gif" width="90%" height="auto">  | <img src="https://github.com/XinJingHao/DQN-DDQN-Pytorch/blob/main/IMGs/Render%20of%20DDQN.gif" width="90%" height="auto">
+:-----------------------:|:-----------------------:|
+
 Other RL algorithms by Pytorch can be found [here](https://github.com/XinJingHao/RL-Algorithms-by-Pytorch).
 
 
@@ -60,14 +63,14 @@ For more details of Hyperparameter Setting, please check 'main.py'
 
 ## Versions
 ### This repository contains three versions of PER :
-- Version 1: PriorDQN_gym0.1x
-- Version 2: PriorDQN_gym0.2x
-- Version 3: LightPriorDQN_gym0.2x
+- V1: PriorDQN_gym0.1x
+- V2: PriorDQN_gym0.2x
+- V3: LightPriorDQN_gym0.2x
 
-where **Version 3 is most recommended**, because it is the newest, simplest, and fastest one.
+where **V3 is most recommended**, because it is the newest, simplest, and fastest one.
 
 ### Details of V1, V2, and V3:
-+ **Version 1: PriorDQN_gym0.1x**
++ **V1: PriorDQN_gym0.1x**
 
   Implemented with **gym==0.19.0**, where ***s_next, a, r, done, info = env.step(a)***
 
@@ -90,7 +93,7 @@ where **Version 3 is most recommended**, because it is the newest, simplest, and
 
 
 
-+ **Version 2: PriorDQN_gym0.2x**
++ **V2: PriorDQN_gym0.2x**
 
   Implemented with **gymnasium==0.29.1**, where ***s_next, a, r, terminated, truncated, info = env.step(a)***
 
@@ -116,7 +119,7 @@ where **Version 3 is most recommended**, because it is the newest, simplest, and
 
 
 
-+ **Version 3: LightPriorDQN_gym0.2x**
++ **V3: LightPriorDQN_gym0.2x**
 
   An optimized version of PriorDQN_gym0.2x,
 
