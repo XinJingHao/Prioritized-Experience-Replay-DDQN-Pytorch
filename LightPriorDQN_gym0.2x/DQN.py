@@ -81,7 +81,7 @@ class DQN_Agent(object):
 		current_Q = self.q_net(s).gather(1,a)
 
 		# BP
-		q_loss = torch.square((~tr) * Normed_IS_weight * (Q_target - current_Q)).mean()
+		q_loss = torch.square((~tr) * Normed_IS_weight * (Q_target - current_Q)).mean()  #这里好像不用乘(~tr)
 		self.q_net_optimizer.zero_grad()
 		q_loss.backward()
 		torch.nn.utils.clip_grad_norm_(self.q_net.parameters(), 10.0)
